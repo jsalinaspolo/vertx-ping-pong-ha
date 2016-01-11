@@ -27,10 +27,9 @@ I've created 3 different configurations to cover the different possible environm
 2. Copy distribution/bare-instance-1.0-SNAPSHOT-fat.jar in a different node
 
 ## Run the jars
+* Pong:
 
-1. Pong:
-
-```java -jar pong-1.0-SNAPSHOT-fat.jar -ha -cluster-host XXX.XXX.XXX.XX```
+ ```java -jar pong-1.0-SNAPSHOT-fat.jar -ha -cluster-host XXX.XXX.XXX.XX```
 
 for example
 
@@ -40,7 +39,7 @@ or
 
 ```java -jar pong-1.0-SNAPSHOT-fat.jar -ha -cluster-host 192.168.112.10```
 
-2. Ping:
+* Ping:
 
 ```java -jar ping-1.0-SNAPSHOT-fat.jar -ha -cluster-host XXX.XXX.XXX.XX```
 
@@ -52,7 +51,7 @@ or
 
 ```java -jar ping-1.0-SNAPSHOT-fat.jar -ha -cluster-host 192.168.112.9```
 
-3. Bare instance
+* Bare instance
 
 ```java -cp 'distribution/*' com.jspcore.BareInstance bare```
 
@@ -60,25 +59,17 @@ or
 ## Testing High Availability
 
 1. Scenario 1.
-
-Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed
+* Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed
 
 2. Scenario 2.
+* Do a kill -9 of both process (kill -9 PID1 PID2), then the bare instance deploy sometimes one of them or none.
 
-Do a kill -9 of both process (kill -9 PID1 PID2), then the bare instance deploy sometimes one of them or none.
-
-3. Scenario 3.
-
-Deploying ping and pong in the same machine and bare instance in a different machine.
-
-Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed in the machine
+3. Scenario 3 (Deploying ping and pong in same machine and bare instance in a different machine)
+* Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed in the machine
  where is running
 
-4. Scenario 4.
-
-Deploying ping and pong in the same machine and bare instance in a different machine.
-
-Shutdown the machine where ping/pong is running to simulate a crash, then the bare instance after 5 minutes deploy
+4. Scenario 4 (Deploying ping and pong in same machine and bare instance in a different machine)
+* Shutdown the machine where ping/pong is running to simulate a crash, then the bare instance after 5 minutes deploy
 sometimes one of them or none.
 
 
