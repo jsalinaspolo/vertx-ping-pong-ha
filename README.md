@@ -74,7 +74,7 @@ Deploying ping and pong in the same machine and bare instance in a different mac
 Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed in the machine
  where is running
 
-3. Scenario 4.
+4. Scenario 4.
 
 Deploying ping and pong in the same machine and bare instance in a different machine.
 
