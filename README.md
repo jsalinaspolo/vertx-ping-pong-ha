@@ -22,33 +22,63 @@ I've created 3 different configurations to cover the different possible environm
 
 ## Upload jars to different machines
 
-1. Copy pong/target/pong-1.0-SNAPSHOT-fat.jar in one machine
-2. Copy ping/target/ping-1.0-SNAPSHOT-fat.jar in a different machine
+1. Copy distribution/pong-1.0-SNAPSHOT-fat.jar in one node
+2. Copy distribution/ping-1.0-SNAPSHOT-fat.jar in other node
+2. Copy distribution/bare-instance-1.0-SNAPSHOT-fat.jar in a different node
 
 ## Run the jars
 
 1. Pong:
 
-```java -jar pong-1.0-SNAPSHOT-fat.jar -cluster -cluster-host XXX.XXX.XXX.XX```
+```java -jar pong-1.0-SNAPSHOT-fat.jar -ha -cluster-host XXX.XXX.XXX.XX```
 
 for example
 
-```java -jar pong-1.0-SNAPSHOT-fat.jar -cluster -cluster-host 127.0.0.1```
+```java -jar pong-1.0-SNAPSHOT-fat.jar -ha -cluster-host 127.0.0.1```
 
 or
 
-```java -jar pong-1.0-SNAPSHOT-fat.jar -cluster -cluster-host 192.168.112.10```
+```java -jar pong-1.0-SNAPSHOT-fat.jar -ha -cluster-host 192.168.112.10```
 
 2. Ping:
 
-```java -jar ping-1.0-SNAPSHOT-fat.jar -cluster -cluster-host 192.168.112.9```
+```java -jar ping-1.0-SNAPSHOT-fat.jar -ha -cluster-host XXX.XXX.XXX.XX```
 
 for example
 
-```java -jar ping-1.0-SNAPSHOT-fat.jar -cluster -cluster-host 127.0.0.1```
+```java -jar ping-1.0-SNAPSHOT-fat.jar -ha -cluster-host 127.0.0.1```
 
 or
 
-```java -jar ping-1.0-SNAPSHOT-fat.jar -cluster -cluster-host 192.168.112.9```
+```java -jar ping-1.0-SNAPSHOT-fat.jar -ha -cluster-host 192.168.112.9```
+
+3. Bare instance
+
+```java -cp 'distribution/*' com.jspcore.BareInstance bare```
+
+
+## Testing High Availability
+
+1. Scenario 1.
+
+Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed
+
+2. Scenario 2.
+
+Do a kill -9 of both process (kill -9 PID1 PID2), then the bare instance deploy sometimes one of them or none.
+
+3. Scenario 3.
+
+Deploying ping and pong in the same machine and bare instance in a different machine.
+
+Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed in the machine
+ where is running
+
+3. Scenario 4.
+
+Deploying ping and pong in the same machine and bare instance in a different machine.
+
+Shutdown the machine where ping/pong is running to simulate a crash, then the bare instance after 5 minutes deploy
+sometimes one of them or none.
 
 

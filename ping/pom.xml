@@ -20,20 +20,8 @@
                     <resource>
                         <directory>src/main/resources</directory>
                     </resource>
-
-                </resources>
-            </build>
-        </profile>
-
-        <profile>
-            <id>int</id>
-            <build>
-                <resources>
                     <resource>
-                        <directory>src/main/resources</directory>
-                    </resource>
-                    <resource>
-                        <directory>src/main/resources/test</directory>
+                        <directory>src/main/resources/local</directory>
                     </resource>
                 </resources>
             </build>
@@ -91,7 +79,7 @@
                             </transformers>
                             <artifactSet>
                             </artifactSet>
-                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar
+                            <outputFile>../distribution/${project.artifactId}-${project.version}-fat.jar
                             </outputFile>
                         </configuration>
                     </execution>
