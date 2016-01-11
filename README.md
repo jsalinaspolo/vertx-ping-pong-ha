@@ -1,4 +1,4 @@
-# Vertx3 ping-pong cluster example
+# Vertx3 ping-pong high availbility and a bare instance example
 
 ## Environment configuration
 
