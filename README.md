@@ -59,17 +59,17 @@ or
 ## Testing High Availability
 
 1. Scenario 1.
-* Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed
+ * Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed
 
 2. Scenario 2.
-* Do a kill -9 of both process (kill -9 PID1 PID2), then the bare instance deploy sometimes one of them or none.
+ * Do a kill -9 of both process (kill -9 PID1 PID2), then the bare instance deploy sometimes one of them or none.
 
 3. Scenario 3 (Deploying ping and pong in same machine and bare instance in a different machine)
-* Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed in the machine
+ * Do a kill -9 of some process ping or pong (kill -9 PID), then the bare instance deploy the verticle killed in the machine
  where is running
 
 4. Scenario 4 (Deploying ping and pong in same machine and bare instance in a different machine)
-* Shutdown the machine where ping/pong is running to simulate a crash, then the bare instance after 5 minutes deploy
+ * Shutdown the machine where ping/pong is running to simulate a crash, then the bare instance after 5 minutes deploy
 sometimes one of them or none.
 
 
